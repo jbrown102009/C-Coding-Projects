@@ -1,1 +1,108 @@
+// Created by Johnathan Brown
+
+#include <iostream>
+#include <cmath>
+#include <stdlib.h>
+#include <iomanip>
+using namespace std;
+int main (){
+
+float EXPEDITED = 0.295;
+float PRIORITY = 0.165;
+float STANDARD = 0.085;
+int user_input;
+float distance;
+float weight;
+float total;
+int zip_orgin;
+int zip_destination;
+
+
+
+    enum Options {AIR = 1, TRUCK = 2, COURIER = 3, EXIT = 4};
+
+    cout << "+******************* M E N U ******************+" << endl;
+    cout << "| Choose a Service for Package Delivery:    | " << endl;
+    cout << "|     1. FastShip Air (EXPEDITED)           | " << endl;
+    cout << "|     2. FastShip Freight Truck (PRIORITY)  | " << endl;
+    cout << "|     3. FastShip Local Courier (STANDARD)  | " << endl;
+    cout << "|     4. Exit                               | " << endl;
+    cout << "+**********************************************+ " << endl;
+    cout << "---->  ";
+    cin >> user_input;
+
+    switch (user_input){
+    case 1:
+        cout << "FastShip Air (EXPEDITED) " << endl;
+        break;
+    case 2:
+        cout << "FastShip Freight Truck (PRIORITY)" << endl;
+        break;
+    case 3:
+        cout << "FastShip Local Courier (STANDARD)" << endl;
+        break;
+    case 4:
+        cout << "Exit " << endl;
+        break;
+    default:
+         cout << "The program has experienced an error!" << endl;
+         break;
+    }
+
+        if(user_input >= 1 && user_input <=3)
+        {
+
+        cout << "Please enter Zip code of destination" << endl;
+        cin >> zip_orgin;
+
+        while(zip_orgin <= 0 || zip_orgin > 99999)
+            {
+
+        cout << "This is invalid bro!" << endl;
+        cout << "Please enter Zip code of destination" << endl;
+        cin >> zip_orgin;
+
+            }
+
+        cout << "Please enter the Zip code destination" << endl;
+        cin >> zip_destination;
+        while(zip_destination <=0 || zip_destination > 99999)
+            {
+                cout << "Thats invalid Brospeh!" << endl;
+                cout << "Please enter the Zip code destination" << endl;
+                cin >> zip_destination;
+
+            }
+
+        cout << "Please enter weight in pounds" << endl;
+        cin >> weight;
+        while(weight<0 && weight>3.40282e+038)
+        {
+          cout << "Invalid entry " << endl;
+          cout << "Enter weight in pounds: " << endl;
+          cin >> weight;
+        }
+
+        if(user_input == 1)
+            {
+                cout<<"\nFastShip EXPEDITED Service: "<< fixed << setprecision(2) <<(fabs(zip_destination - zip_orgin)/1000)*weight*0.295 << endl;
+            }
+            else if(user_input == 2)
+                {
+                    cout<<"\nFastShip PRIORITY Service: "<< fixed << setprecision(2) <<(fabs(zip_destination - zip_orgin)/1000)*weight*0.165 << endl;
+                }
+            else
+                {
+                    cout<<"\nFastShip STANDARD Service: "<< fixed << setprecision(2) <<(fabs(zip_destination - zip_orgin)/1000)*weight*0.085 <<endl;
+                }
+}
+
+
+
+
+
+
+
+    return 0;
+}
 
